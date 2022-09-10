@@ -1,7 +1,7 @@
 #VGui template
 Create vgui style standalone application.
 
-![alt text](https://github.com/[username]/[reponame]/blob/[branch]/image.jpg?raw=true)
+![alt text](https://github.com/pujolitoo/vgui-boilerplate/blob/[branch]/image.jpg?raw=true)
 
 ##Building
 
