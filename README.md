@@ -1,9 +1,9 @@
-#VGui template
+# VGui template
 Create vgui style standalone application.
 
 ![alt text](https://github.com/pujolitoo/vgui-boilerplate/blob/master/res/demo.png?raw=true)
 
-##Building
+## Building
 
 '''
 mkdir build
