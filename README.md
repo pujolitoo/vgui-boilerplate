@@ -5,7 +5,7 @@ Create vgui style standalone application.
 
 ## Building
 
-The application must be compiled on Visual Studio 2013 toolset and targetting x86.
+The application must be compiled on Visual Studio 2013 toolset and targetting x86, otherwise it won't work.
 
 ```
 mkdir build
