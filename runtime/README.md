@@ -1,1 +1,1 @@
-Binaries extracted from SourceSDK Base 2013.
+These runtime binaries are extracted from SourceSDK Base 2013.
