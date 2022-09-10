@@ -5,7 +5,7 @@ Create vgui style standalone application.
 
 ## Building
 
-First, clone the repository:
+First, clone the repository recursively:
 
 ```
 git clone --recursive https://github.com/pujolitoo/vgui-boilerplate.git
