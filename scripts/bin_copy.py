@@ -1,4 +1,5 @@
 from steam_app_info import *
+from contextlib import suppress
 import os
 import sys
 import shutil
@@ -22,10 +23,8 @@ except IndexError:
 
 dist_dir = os.path.join(cwdir, "dist")
 
-try:
+with suppress(Exception):
     os.mkdir(dist_dir)
-except:
-    pass
 
 try:
     sdk_base_handle = SteamAppInfo(243730)
@@ -39,10 +38,8 @@ bin_dir = os.path.join(sdk_path, "bin")
 for bin_file in bin:
     src_path = os.path.join(bin_dir, bin_file)
     dest_path = os.path.join(dist_dir, bin_file)
-    try:
+    with suppress(Exception):
         shutil.copyfile(src=src_path, dst=dest_path)
-    except:
-        pass
     
 try:
     shutil.copytree(os.path.join(sdk_path, "platform", "resource"), dist_dir+"/resource")
