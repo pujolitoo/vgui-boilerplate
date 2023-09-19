@@ -12,7 +12,7 @@ CMainFrame::CMainFrame(vgui::Panel* parent, const char* name)
 	SetMinimumSize(310, 350);
 	SetSize(310, 350);
 	MoveToCenterOfScreen();
-	SetSizeable(true);
+	SetSizeable(false);
 	SetTitle("Hello World!", true);
 
 	SetMinimizeButtonVisible(true);

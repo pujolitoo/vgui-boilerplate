@@ -36,18 +36,25 @@ sdk_path = sdk_base_handle.get_app_path()
 
 bin_dir = os.path.join(sdk_path, "bin")
 
-try:
-    for bin_file in bin:
-        src_path = os.path.join(bin_dir, bin_file)
-        dest_path = os.path.join(dist_dir, bin_file)
+for bin_file in bin:
+    src_path = os.path.join(bin_dir, bin_file)
+    dest_path = os.path.join(dist_dir, bin_file)
+    try:
         shutil.copyfile(src=src_path, dst=dest_path)
+    except:
+        pass
+    
+try:
     shutil.copytree(os.path.join(sdk_path, "platform", "resource"), dist_dir+"/resource")
-    
-    proj_bin_path = os.path.join(proj_bin, build_type)
-    bin_list = os.listdir(proj_bin_path)
-    for file in bin_list:
-        if(file.endswith(".exe") or file.endswith(".dll")):
-            shutil.move(src=os.path.join(proj_bin_path, file), dst=os.path.join(dist_dir, file))
-    
-except Exception:
+except:
     pass
+    
+proj_bin_path = os.path.join(proj_bin, build_type)
+bin_list = os.listdir(proj_bin_path)
+for file in bin_list:
+    if(file.endswith(".exe") or file.endswith(".dll")):
+        dest_path = os.path.join(dist_dir, file)
+        if(os.path.isfile(dest_path)):
+            os.remove(dest_path)
+        shutil.move(src=os.path.join(proj_bin_path, file), dst=os.path.join(dist_dir, file))
+    
