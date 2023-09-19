@@ -1,4 +1,4 @@
-from steam_app_info import SteamAppInfo
+from steam_app_info import *
 import os
 import sys
 import shutil
@@ -27,7 +27,10 @@ try:
 except:
     pass
 
-sdk_base_handle = SteamAppInfo(243730)
+try:
+    sdk_base_handle = SteamAppInfo(243730)
+except SteamAppInfoException:
+    print("Could not find SourceSDK 2013! Binary cant be copied.")
 
 sdk_path = sdk_base_handle.get_app_path()
 
