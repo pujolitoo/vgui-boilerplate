@@ -41,10 +41,8 @@ for bin_file in bin:
     with suppress(Exception):
         shutil.copyfile(src=src_path, dst=dest_path)
     
-try:
+with suppress(Exception):
     shutil.copytree(os.path.join(sdk_path, "platform", "resource"), dist_dir+"/resource")
-except:
-    pass
     
 proj_bin_path = os.path.join(proj_bin, build_type)
 bin_list = os.listdir(proj_bin_path)
