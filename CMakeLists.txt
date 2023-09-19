@@ -1,6 +1,12 @@
 cmake_minimum_required(VERSION 3.15)
 project(vgui_example)
 
+if(WIN32)
+	set(PY_EXE "python")
+else()
+	set(PY_EXE "python3")
+endif()
+
 if (CMAKE_GENERATOR MATCHES "Visual Studio")
 	if(CMAKE_SIZEOF_VOID_P EQUAL 8)
 		error(FATAL_ERROR "This type of application can not be compiled to 64 bits target")
@@ -39,5 +45,11 @@ target_link_libraries(${PROJECT_NAME} PRIVATE vstdlib.lib)
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 
-file(COPY runtime/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Debug)
-file(COPY runtime/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Release)
+message(STATUS ${CMAKE_BUILD_TYPE})
+
+add_custom_command(
+	TARGET ${PROJECT_NAME}
+	POST_BUILD
+	COMMAND ${PY_EXE} ../scripts/bin_copy.py ${CMAKE_SOURCE_DIR} ${CMAKE_BINARY_DIR} ${CMAKE_BUILD_TYPE}
+	COMMENT "MoveFiles"
+)

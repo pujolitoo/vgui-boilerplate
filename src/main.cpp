@@ -47,6 +47,8 @@ public:
 		{
 			return false;
 		}
+		InitDefaultFileSystem();
+		return true;
 	}
 	virtual int Main()
 	{
