@@ -22,6 +22,6 @@ cd vgui-boilerplate
 ```
 mkdir build
 cd build
-cmake .. -G"Visual Studio 12 2013" -A Win32
-cmake --build .
+cmake .. -DCMAKE_BUILD_TYPE="Debug" -G"Visual Studio 12 2013" -A Win32
+cmake --build . --config Debug
 ```
