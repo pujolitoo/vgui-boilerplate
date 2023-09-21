@@ -32,7 +32,13 @@ include_directories(${SOURCE_SDK}/public/vgui_controls)
 
 file(GLOB_RECURSE SOURCE "${SOURCES_DIR}/*.cpp" "${SOURCES_DIR}/*.h")
 
-add_executable(${PROJECT_NAME} WIN32 ${SOURCE} ${VGUI_ADICIONAL_SOURCES})
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+	add_executable(${PROJECT_NAME} WIN32 ${SOURCE} ${VGUI_ADICIONAL_SOURCES})
+else()
+	add_executable(${PROJECT_NAME} ${SOURCE} ${VGUI_ADICIONAL_SOURCES})
+endif()
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE $<$<CONFIG:Release>:NDEBUG> $<$<CONFIG:Debug>:NDEBUG=0>)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE appframework.lib)
 target_link_libraries(${PROJECT_NAME} PRIVATE steam_api.lib)
@@ -43,7 +49,7 @@ target_link_libraries(${PROJECT_NAME} PRIVATE tier3.lib)
 target_link_libraries(${PROJECT_NAME} PRIVATE vgui_controls.lib)
 target_link_libraries(${PROJECT_NAME} PRIVATE vstdlib.lib)
 
-set_property(TARGET ${PROJECT_NAME} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+set_property(TARGET ${PROJECT_NAME} PROPERTY MSVC_RUNTIME_LIBRARY "MultiThreaded")
 
 message(STATUS ${CMAKE_BUILD_TYPE})
 

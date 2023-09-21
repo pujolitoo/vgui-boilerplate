@@ -3,6 +3,8 @@
 #include <vgui/IVGui.h>
 #include <KeyValues.h>
 
+#include <tier0/memdbgon.h>
+
 CMainFrame::CMainFrame(vgui::Panel* parent, const char* name)
 	: vgui::Frame(parent, name)
 {

@@ -22,8 +22,6 @@
 
 #include "CMainPanel.h"
 
-#include <tier0/memdbgoff.h>
-
 #define FILESYSTEM_MODULE_NAME "FileSystem_Stdio.dll"
 
 CSysModule* g_pFileSystemModule = NULL;
@@ -129,10 +127,15 @@ public:
 	}
 };
 
-int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+int main()
 {
 	CTestAppSystemGroup testSystems;
 	CTestApplication testApplication(&testSystems);
 	return 	testApplication.Run();
+}
+
+int WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
+{
+	return main();
 }
 

@@ -7,8 +7,6 @@ import shutil
 bin = [
     "FileSystem_Stdio.dll",
     "vgui2.dll",
-    "engine.dll",
-    "vguimatsurface.dll",
     "tier0.dll",
     "vstdlib.dll"
 ]
@@ -42,7 +40,7 @@ for bin_file in bin:
         shutil.copyfile(src=src_path, dst=dest_path)
     
 with suppress(Exception):
-    shutil.copytree(os.path.join(sdk_path, "platform", "resource"), dist_dir+"/resource")
+    shutil.copytree(os.path.join(sdk_path, "platform"), dist_dir+"/platform")
     
 proj_bin_path = os.path.join(proj_bin, build_type)
 bin_list = os.listdir(proj_bin_path)
